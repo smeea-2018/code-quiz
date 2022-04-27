@@ -3,6 +3,10 @@
   /* border: 2px solid black; */
   margin: 30 px;
 }
+
+.navnav-container {
+  display: flex;
+}
 .start-quiz-section {
   padding: 10px;
   text-align: center;

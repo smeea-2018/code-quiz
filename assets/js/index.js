@@ -1,6 +1,3 @@
-const question =
-  "Which of the following keywords is used to define a variable in Javascript?";
-
 const answer = ["var", "let", "Both var and let", "none"];
 const startButton = document.getElementById("start-quiz-button");
 const main = document.getElementById("main");
@@ -17,7 +14,8 @@ const startQuiz = () => {
 
   const h2 = document.createElement("h2");
   h2.setAttribute("class", "subtitle");
-  h2.textContent = question;
+  h2.textContent =
+    "Which of the following keywords is used to define a variable in Javascript?";
 
   const ul = document.createElement("ul");
   for (let i = 0; i < answer.length; i += 1) {
