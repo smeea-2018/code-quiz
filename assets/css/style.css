@@ -17,12 +17,11 @@ body {
   justify-content: space-around;
   background-color: aqua;
 }
+
+/* navbar list item styles */
 .nav-container li {
   list-style: none;
   background-color: black;
-}
-.nav-item {
-  color: white;
 }
 
 a:link {
@@ -38,4 +37,11 @@ a:link {
 
 .question-section {
   background-color: faedcd;
+  text-align: center;
+}
+
+.list-item {
+  background-color: aqua;
+  margin: 10px;
+  list-style-type: none;
 }
