@@ -5,37 +5,46 @@
   <body>
     <header class="header">
       <nav class="nav-container">
-        <div><a href="#">Home</a></div>
-        <div><a href="./highscore.html">High scores</a></div>
+        <ul>
+          <li><a class="nav-item" href="#">Home</a></li>
+          <li><a class="nav-item" href="./highscore.html">High scores</a></li>
+        </ul>
       </nav>
     </header>
     <main id="main">
       <section class="start-quiz-section" id="start-quiz-id">
         <h1>Code Quiz Challenge</h1>
         <div>
-          <p>
-            Code quiz tests your knowledge of HTML, CSS and JavaScript. Time
-            bound multiple choice questions are presented and score is recorded.
-          </p>
+          Code quiz tests your knowledge of HTML, CSS and JavaScript. Time bound
+          multiple choice questions are presented and score is recorded.
         </div>
         <div>
           <button id="start-quiz-button" type="submit">Start Quiz</button>
         </div>
       </section>
+      <section class="question-section">
+        <h2 class="subtitle">Question</h2>
+        <ul>
+          <li class="list-item">Var</li>
+          <li class="list-item">Let</li>
+          <li class="list-item">Both var and let</li>
+          <li class="list-item">None</li>
+        </ul>
+      </section>
 
-    <section>
-      <form>
-          <div><h6>Your Dcore: 100</h6></div>
-          <div><input type ="number"></div>
-         
+      <!--  <section>
+        <form>
+          <h6>Your Score: 100</h6>
+          <div><input type="number" /></div>
+
           <div>
-              <button type="submit">Submit</button></div>
+            <button type="submit">Submit</button>
           </div>
-          <div><div class="alert alert-primary" role="alert">
-  This is a primary alert—check it out!
-</div></div>
-      </form>
-      </section>  
+          <div class="alert alert-primary" role="alert">
+            This is a primary alert—check it out!
+          </div>
+        </form>
+      </section> -->
     </main>
     <footer>@codeQuiz</footer>
     <script src="assets/js/index.js"></script>

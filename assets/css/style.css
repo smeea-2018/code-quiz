@@ -1,12 +1,34 @@
+body {
+  background-color: aliceblue;
+}
+
+/* Header styles */
 .header {
   padding: 10px;
   /* border: 2px solid black; */
   margin: 30 px;
+  background-color: darkcyan;
 }
 
-.navnav-container {
+/* Nav styles applied  */
+.nav-container {
   display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  background-color: aqua;
 }
+.nav-container li {
+  list-style: none;
+  background-color: black;
+}
+.nav-item {
+  color: white;
+}
+
+a:link {
+  text-decoration: none;
+}
+
 .start-quiz-section {
   padding: 10px;
   text-align: center;
