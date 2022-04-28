@@ -35,3 +35,7 @@ a:link {
   /* border: 2px solid burlywood; */
   margin: 50px;
 }
+
+.question-section {
+  background-color: faedcd;
+}
