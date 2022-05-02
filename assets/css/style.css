@@ -2,7 +2,7 @@ body {
   background-color: aliceblue;
 }
 
-/* Header styles */
+/* Header styles on index.html and question.html */
 .header {
   padding: 10px;
   /* border: 2px solid black; */
@@ -23,7 +23,10 @@ body {
   list-style: none;
   background-color: black;
 }
-
+/* Link text color changed to white */
+.nav-item {
+  color: white;
+}
 a:link {
   text-decoration: none;
 }
@@ -35,6 +38,7 @@ a:link {
   margin: 50px;
 }
 
+.form-container,
 .question-section {
   background-color: faedcd;
   text-align: center;
@@ -44,4 +48,8 @@ a:link {
   background-color: aqua;
   margin: 10px;
   list-style-type: none;
+}
+
+.form-container {
+  justify-content: center;
 }
