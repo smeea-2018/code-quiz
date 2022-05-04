@@ -1,5 +1,3 @@
-let score = 0;
-let questionIndex = 0;
 // Questions to be presented
 const questions = [
   {
@@ -36,12 +34,15 @@ const questions = [
     correctAnswer: "  if(x == 2)",
   },
 ];
+
+let questionIndex = 0;
+let timer = 10 * questions.length;
+
 //const answer = ["var", "let", "Both var and let", "none"];
 const startButton = document.getElementById("start-quiz-button");
 const main = document.getElementById("main");
 const timerSpan = document.getElementById("timer-span");
 const formElement = document.getElementById("submit-score-button");
-let timer = 10;
 
 let arrayFromLS = JSON.parse(localStorage.getItem("feedbackResults"));
 
@@ -53,7 +54,6 @@ if (!arrayFromLS) {
 
 const selectAnswer = (event) => {
   //check if answer is selected from one of the options
-  const currentTarget = event.currentTarget;
   const target = event.target;
 
   if (target.tagName === "LI") {
@@ -69,46 +69,23 @@ const selectAnswer = (event) => {
   //Remove current Question
 
   const deleteSection = document.getElementById("question-container");
+  deleteSection.remove();
 
   if (questionIndex < questions.length - 1 && timer > 0) {
-    deleteSection.remove("question - container");
     questionIndex += 1;
     renderQuestion();
-  } else {
-    //renderResults();
+  } else if (questionIndex === questions.length - 1 && timer >= 0) {
     renderForm();
-  }
-};
-
-const submitForm = (event) => {
-  event.preventDefault();
-  //get initials from form
-  const initials = document.getElementById("name-initials").value;
-  /*
-  if (typeof initials === "string") {
-    console.log(initials);
-  } else console.log("enter valid value");*/
-  if (initials) {
-    //get feedback results from LS to store as object values: initials and feedback results
-    const feedbackResults = JSON.parse(localStorage.getItem("feedbackResults"));
-    if (!feedbackResults) {
-      localStorage.setItem(feedbackResults, JSON.stringify([]));
-    }
-    const result = {
-      initials,
-      feedbackResults,
-    };
-    const allResults = JSON.parse(localStorage.getItem("feedbackResults"));
-    if (!allResults) {
-      localStorage.setItem(allResults, JSON.stringify([]));
-    }
-
-    storeInLS("allResults", result);
+  } else {
+    // render game over
   }
 };
 
 //Store values in LS
 const storeInLS = (key, value) => {
+  if (!arrayFromLS) {
+    arrayFromLS = [];
+  }
   arrayFromLS.push(value);
   localStorage.setItem(key, JSON.stringify(arrayFromLS));
 };
@@ -120,7 +97,11 @@ const compareResults = (userAnswer) => {
 
   if (userAnswer !== questions[questionIndex].correctAnswer) {
     timer -= 5;
-    timerSpan.textContent = timer;
+    if (timer < 0) {
+      timerSpan.textContent = 0;
+    } else {
+      timerSpan.textContent = timer;
+    }
   }
 };
 
@@ -130,11 +111,13 @@ const displayResults = (event) => {
   //get initials from form
   const initials = document.getElementById("name-initials").value;
   if (initials) {
-    yourScore = {
+    const yourScore = {
       initials,
-      score,
+      score: timer,
     };
     storeInLS("feedbackResults", yourScore);
+  } else {
+    alert("Please enter your initials");
   }
 
   // display high score
@@ -168,10 +151,13 @@ const setTimer = () => {
       const removeTimer = document.getElementById("timer-section");
       removeTimer.remove();
       //Delete question
-      const deleteSection = document.getElementById("question-section");
+      const deleteSection = document.getElementById("question-container");
 
-      deleteSection.remove();
-      // renderForm();
+      if (deleteSection) {
+        deleteSection.remove();
+      }
+    } else if (questionIndex === questions.length - 1) {
+      clearInterval(timerId);
     }
   };
   //Start Timer
@@ -187,7 +173,7 @@ const renderForm = () => {
   section.setAttribute("class", "form-container");
   h6 = document.createElement("h6");
   h6.setAttribute("class", "score-value");
-  h6.textContent = `your score timer`;
+  h6.textContent = `your score is ${timer}`;
 
   const form = document.createElement("form");
   form.setAttribute("id", "user-score-form");
@@ -237,7 +223,7 @@ const renderQuestion = () => {
 
   const ul = document.createElement("ul");
   ul.setAttribute("class", "unordered-list");
-  for (let i = 0; i < questions[questionIndex].options.length; i += 1) {
+  for (let i = 0; i < currentQuestion.options.length; i += 1) {
     const li = document.createElement("li");
     li.setAttribute("class", "list-item");
     li.setAttribute("data-value", currentQuestion.options[i]);
