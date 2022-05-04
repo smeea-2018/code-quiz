@@ -41,7 +41,13 @@ const startButton = document.getElementById("start-quiz-button");
 const main = document.getElementById("main");
 const timerSpan = document.getElementById("timer-span");
 const formElement = document.getElementById("submit-score-button");
-let timer = 100;
+let timer = 10;
+
+let arrayFromLS = JSON.parse(localStorage.getItem("feedbackResults"));
+
+if (!arrayFromLS) {
+  localStorage.setItem("feedbackResults", JSON.stringify([]));
+}
 
 //function to record click on available options.
 
@@ -51,20 +57,21 @@ const selectAnswer = (event) => {
   const target = event.target;
 
   if (target.tagName === "LI") {
-    const value = target.getAttribute("data-value");
+    const userAnswer = target.getAttribute("data-value");
     //const question = questions[questionIndex].text;
     /*const userAnswers = {
       question,
       value,
     };*/
-    const userAnswer = value;
-    const userScore = compareResults(userAnswer);
+
+    compareResults(userAnswer);
   }
   //Remove current Question
+
   const deleteSection = document.getElementById("question-container");
-  deleteSection.remove("question - container");
 
   if (questionIndex < questions.length - 1 && timer > 0) {
+    deleteSection.remove("question - container");
     questionIndex += 1;
     renderQuestion();
   } else {
@@ -102,29 +109,22 @@ const submitForm = (event) => {
 
 //Store values in LS
 const storeInLS = (key, value) => {
-  const arrayFromLS = JSON.parse(localStorage.getItem(key));
   arrayFromLS.push(value);
-  JSON.stringify(value);
+  localStorage.setItem(key, JSON.stringify(arrayFromLS));
 };
+
 const compareResults = (userAnswer) => {
   //get user answers
 
   //check if user's answer matches the correct answer
 
-  if (userAnswer == questions[questionIndex].correctAnswer) {
-    score += 1;
-    return score;
-  } else {
-    //Increasing timer value by 4 rather than 5 as it is already increased by 1 in setTimer();
-    timer -= 4;
+  if (userAnswer !== questions[questionIndex].correctAnswer) {
+    timer -= 5;
+    timerSpan.textContent = timer;
   }
-  /*if (userAnswers.value == questions.correctAnswer) {
-    score += 1;
-    console.log(score);
-  } //end if*/
 };
 
-const displayResults = () => {
+const displayResults = (event) => {
   //display name
   event.preventDefault();
   //get initials from form
@@ -163,13 +163,15 @@ const setTimer = () => {
     // check if timer is equal to 0
     if (timer <= 0) {
       clearInterval(timerId);
+
       //Delete Timer
       const removeTimer = document.getElementById("timer-section");
       removeTimer.remove();
       //Delete question
       const deleteSection = document.getElementById("question-section");
+
       deleteSection.remove();
-      renderForm();
+      // renderForm();
     }
   };
   //Start Timer
@@ -185,7 +187,7 @@ const renderForm = () => {
   section.setAttribute("class", "form-container");
   h6 = document.createElement("h6");
   h6.setAttribute("class", "score-value");
-  h6.textContent = "your score";
+  h6.textContent = `your score timer`;
 
   const form = document.createElement("form");
   form.setAttribute("id", "user-score-form");
@@ -215,11 +217,11 @@ const renderForm = () => {
 
   main.append(section);
 
-  form.addEventListener("submit", submitForm);
+  form.addEventListener("submit", displayResults);
 };
+
 const renderQuestion = () => {
   //Render the first question
-  setTimer();
 
   const currentQuestion = questions[questionIndex];
 
@@ -254,7 +256,8 @@ const startQuiz = () => {
   sectionStart.remove();
 
   renderQuestion();
+  setTimer();
+  timerSpan.textContent = timer;
 };
 
-formElement.addEventListener("click", displayResults);
 startButton.addEventListener("click", startQuiz);
