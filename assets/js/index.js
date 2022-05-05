@@ -172,7 +172,7 @@ const renderForm = () => {
   section = document.createElement("section");
   section.setAttribute("class", "form-container");
   h6 = document.createElement("h6");
-  h6.setAttribute("class", "score-value");
+  h6.setAttribute("class", "timer-score-value");
   h6.textContent = `your score is ${timer}`;
 
   const form = document.createElement("form");
