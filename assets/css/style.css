@@ -1,5 +1,10 @@
 body {
   background-color: ee9b00;
+  height: 100%;
+  margin-top: 10px;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
 }
 
 /* Header styles on index.html and question.html */
@@ -39,15 +44,18 @@ a:link {
 .timer-text {
   margin: 10px;
 }
+.main-class {
+  flex: 2;
+}
 
 /* section containing information about quiz and start button */
 .start-quiz-section {
   padding-top: 30px;
   text-align: center;
   border: 5px solid burlywood;
-  /* margin: 30px; */
+  margin-bottom: 10px;
   background-color: f95738;
-  width: 90%;
+  width: 100%;
   height: 30rem;
   color: white;
 }
@@ -56,29 +64,66 @@ a:link {
   color: black;
 }*/
 
-#start-quiz-button {
+.button {
   margin: 30px;
   border: 3px solid burlywood;
   border-radius: 10px;
   box-shadow: 0px 0px 2px 2px burlywood;
 }
 
+.button:hover {
+  background-color: e63946;
+}
+
 .form-container,
 .question-section {
-  background-color: faedcd;
+  background-color: 590d22;
   text-align: center;
 }
 
+/* questions rendered when start button clicked */
+.question-section {
+  border: 5px solid burlywood;
+  margin-bottom: 10px;
+  background-color: f95738;
+  width: 100%;
+  height: 30rem;
+  color: white;
+}
+
 .list-item {
+  padding: 5px;
   background-color: aqua;
-  margin: 10px;
+  margin: 20px;
   list-style-type: none;
 }
 
+/* form rendered when all questions are answered */
 .form-container {
   justify-content: center;
 }
 /* Styles for main section end here */
+
+/* Styles for footer section */
+.footer-container {
+  display: flex;
+  flex-direction: row;
+  /* margin: 20px; */
+  border: 2px solid white;
+
+  justify-content: space-between;
+  background-color: darkcyan;
+
+  height: 80px;
+}
+.contact-item {
+  margin: 20px;
+}
+
+.footer-link-item {
+  color: white;
+}
+/* media query */
 @media (max-width: 700px) {
   .header {
     flex-direction: column;
