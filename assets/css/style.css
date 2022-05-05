@@ -1,5 +1,5 @@
 body {
-  background-color: aliceblue;
+  background-color: ee9b00;
 }
 
 /* Header styles on index.html and question.html */
@@ -8,6 +8,8 @@ body {
   /* border: 2px solid black; */
   margin: 30 px;
   background-color: darkcyan;
+  height: 80px;
+  border: 2px solid black;
 }
 
 /* Nav styles applied  */
@@ -15,13 +17,11 @@ body {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  background-color: aqua;
 }
 
 /* navbar list item styles */
 .nav-container li {
   list-style: none;
-  background-color: black;
 }
 /* Link text color changed to white */
 .nav-item {
@@ -30,12 +30,34 @@ body {
 a:link {
   text-decoration: none;
 }
+/* Styles for header section end here */
 
+/* Styles for main section start here */
+
+/* Timer text on landing page */
+.timer-text {
+  margin: 10px;
+}
+
+/* section containing information about quiz and start button */
 .start-quiz-section {
-  padding: 10px;
+  padding-top: 30px;
   text-align: center;
-  /* border: 2px solid burlywood; */
-  margin: 50px;
+  border: 5px solid burlywood;
+  /* margin: 30px; */
+  background-color: f95738;
+  width: 90%;
+  height: 30rem;
+  color: white;
+}
+
+/*.main-heading {
+  color: black;
+}*/
+
+#start-quiz-button {
+  margin: 30px;
+  border: 1em;
 }
 
 .form-container,
@@ -52,4 +74,10 @@ a:link {
 
 .form-container {
   justify-content: center;
+}
+/* Styles for main section end here */
+@media (max-width: 700px) {
+  .header {
+    flex-direction: column;
+  }
 }
