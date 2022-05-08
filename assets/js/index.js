@@ -58,14 +58,21 @@ const selectAnswer = (event) => {
 
   if (target.tagName === "LI") {
     const userAnswer = target.getAttribute("data-value");
-    //const question = questions[questionIndex].text;
-    /*const userAnswers = {
-      question,
-      value,
-    };*/
 
     compareResults(userAnswer);
   }
+
+  //Game Over
+  const gameOver = () => {
+    section = document.createElement("section");
+
+    h2 = document.createElement("h2");
+    h2.setAttribute("class", "high-scores-value");
+    h2.textContent = "Game Over!";
+
+    section.append(h2);
+    main.append(section);
+  };
   //Remove current Question
 
   const deleteSection = document.getElementById("question-container");
@@ -78,6 +85,7 @@ const selectAnswer = (event) => {
     renderForm();
   } else {
     // render game over
+    gameOver();
   }
 };
 
@@ -106,7 +114,6 @@ const compareResults = (userAnswer) => {
 };
 
 const displayResults = (event) => {
-  //display name
   event.preventDefault();
   //get initials from form
   const initials = document.getElementById("name-initials").value;
@@ -119,29 +126,16 @@ const displayResults = (event) => {
   } else {
     alert("Please enter your initials");
   }
-
-  // display high score
-  //console.log(score);
 };
 
 const setTimer = () => {
   const updateTimerValue = () => {
-    //start timer and increment by 1
+    //start timer and decrement by 1
 
     timer -= 1;
 
-    //span : value pf timer
     //set text
     timerSpan.textContent = timer;
-
-    //setInterval(function-counter,delay)
-    //function-counter
-    //-5
-    //stop set interval function.
-
-    // increment timer by 1
-
-    // set text to new timer value
 
     // check if timer is equal to 0
     if (timer <= 0) {
@@ -164,13 +158,12 @@ const setTimer = () => {
   const timerId = setInterval(updateTimerValue, 1000);
 };
 
-// Render results
-
 //Render form
 const renderForm = () => {
   document.getElementById("timer-section").remove();
   section = document.createElement("section");
   section.setAttribute("class", "form-container");
+
   h6 = document.createElement("h6");
   h6.setAttribute("class", "timer-score-value");
   h6.textContent = `your score is ${timer}`;

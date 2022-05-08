@@ -51,6 +51,7 @@ a:link {
 }
 
 /* section containing information about quiz and start button */
+.score-section,
 .start-quiz-section {
   padding-top: 30px;
   text-align: center;
@@ -65,6 +66,7 @@ a:link {
 /*.main-heading {
   color: black;
 }*/
+/* Button to start the quiz */
 
 .button {
   margin: 30px;
@@ -77,30 +79,32 @@ a:link {
   background-color: e63946;
 }
 
-.form-container,
-.question-section {
-  /* background-color: 590d22; */
-  text-align: center;
-}
+/* Styles for start Quiz button end here */
 
-/* questions rendered when start button clicked */
+/* questions rendered when start button clicked  and form presented when all questions answered*/
+
+.high-score-section,
 .form-container,
 .question-section {
   padding: 10px;
   border: 5px solid burlywood;
-  margin-bottom: 10px;
+  margin-bottom: 5px;
   background-color: f95738;
   width: 100%;
   height: 30rem;
   color: white;
+  text-align: center;
 }
 
+/* Question rendered as h2 */
 .subtitle {
   margin: 20px;
   padding: 10px;
   color: black;
 }
 
+/* Answer options provided as list */
+.highScore-list-item,
 .list-item {
   padding: 5px;
   background-color: ce4257;
@@ -108,6 +112,7 @@ a:link {
   list-style-type: none;
 }
 
+/* Styles to change color list-item  */
 .list-item:hover {
   background-color: ff0054;
 }
@@ -118,10 +123,41 @@ a:link {
   margin-top: 20px;
 }
 
+/* Value of the timer when all questions answered */
+.high-scores-value,
 .timer-score-value {
-  color: white;
+  color: 4f000b;
   font-size: larger;
+  text-align: center;
 }
+
+/* text box to get initials */
+
+.name-input {
+  margin-bottom: 20px;
+  border: 2px solid black;
+  padding: 5px;
+}
+
+/* Submit button to enter initials and  value in Local Storage */
+.submit-score-button {
+  margin: 20px 10px 10px 10px;
+  background-color: grey;
+  border-radius: 10px;
+  border: 2px dotted black;
+  color: white;
+  box-shadow: 0px 0px 2px 2px black;
+  padding: 5px;
+  font-weight: bold;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+}
+
+.submit-score-button:hover {
+  background-color: purple;
+  border-radius: 10px;
+  border: 2px solid black;
+}
+
 /* Styles for main section end here */
 
 /* Styles for footer section */
@@ -135,6 +171,7 @@ a:link {
   background-color: darkcyan;
 
   height: 80px;
+  margin-bottom: 10px;
 }
 .contact-item {
   margin: 20px;
@@ -145,7 +182,10 @@ a:link {
 }
 /* media query */
 @media (max-width: 700px) {
-  .header {
+  .nav-container,
+  .footer-container {
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
   }
 }
