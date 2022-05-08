@@ -83,7 +83,7 @@ a:link {
 
 /* questions rendered when start button clicked  and form presented when all questions answered*/
 
-/*.high-score-section,
+.high-score-section,
 .form-container,
 .question-section {
   padding: 10px;
@@ -94,7 +94,7 @@ a:link {
   height: 30rem;
   color: white;
   text-align: center;
-}*/
+}
 
 /* Question rendered as h2 */
 .subtitle {
