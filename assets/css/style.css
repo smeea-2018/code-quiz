@@ -51,7 +51,7 @@ a:link {
 }
 
 /* section containing information about quiz and start button */
-.score-section,
+.high-score-section,
 .start-quiz-section {
   padding-top: 30px;
   text-align: center;
@@ -83,7 +83,7 @@ a:link {
 
 /* questions rendered when start button clicked  and form presented when all questions answered*/
 
-.high-score-section,
+/*.high-score-section,
 .form-container,
 .question-section {
   padding: 10px;
@@ -94,7 +94,7 @@ a:link {
   height: 30rem;
   color: white;
   text-align: center;
-}
+}*/
 
 /* Question rendered as h2 */
 .subtitle {
@@ -180,6 +180,12 @@ a:link {
 .footer-link-item {
   color: white;
 }
+
+/*Styles for highscore section margin-top*/
+.high-score-section {
+  margin-top: 20px;
+}
+
 /* media query */
 @media (max-width: 700px) {
   .nav-container,
@@ -187,5 +193,10 @@ a:link {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+  }
+
+  .high-score-section {
+    margin-top: 20px;
+    margin-bottom: 10px;
   }
 }
