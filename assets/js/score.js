@@ -37,8 +37,6 @@ const onLoad = () => {
     //sort array in descending order
     const finalHighScore = sortHighScores(highScore);
 
-    console.log(finalHighScore.length);
-    console.log(finalHighScore);
     highScoresForm(finalHighScore);
   }
 };

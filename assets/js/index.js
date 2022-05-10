@@ -36,7 +36,7 @@ const questions = [
 ];
 
 let questionIndex = 0;
-let timer = 10 * questions.length;
+let timer = 10; /*10 * questions.length;*/
 
 //const answer = ["var", "let", "Both var and let", "none"];
 const startButton = document.getElementById("start-quiz-button");
@@ -107,6 +107,7 @@ const compareResults = (userAnswer) => {
     timer -= 5;
     if (timer < 0) {
       timerSpan.textContent = 0;
+      gameOver();
     } else {
       timerSpan.textContent = timer;
     }

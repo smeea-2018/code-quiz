@@ -10,7 +10,6 @@ body {
 /* Header styles on index.html and question.html */
 .header {
   padding: 10px;
-  /* border: 2px solid black; */
   margin: 30 px;
   background-color: darkcyan;
   height: 80px;
@@ -85,7 +84,8 @@ a:link {
 
 .high-score-section,
 .form-container,
-.question-section {
+.question-section,
+.start-quiz-section {
   padding: 10px;
   border: 5px solid burlywood;
   margin-bottom: 5px;
@@ -164,7 +164,6 @@ a:link {
 .footer-container {
   display: flex;
   flex-direction: row;
-  /* margin: 20px; */
   border: 2px solid white;
 
   justify-content: space-between;
@@ -191,10 +190,21 @@ a:link {
   .nav-container,
   .footer-container {
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
   }
 
+  /* Style applied to header list item */
+  .nav-container li {
+    margin: 10px;
+  }
+
+  /* Style applied to footer links */
+  .contact-item {
+    margin: 10px;
+  }
+
+  /* High score page styles  */
   .high-score-section {
     margin-top: 20px;
     margin-bottom: 10px;
